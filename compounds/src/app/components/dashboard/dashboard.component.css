@@ -1,0 +1,73 @@
+.main{
+    background-color:rgb(52, 244, 172);
+    padding-left: 50px;
+}
+.add-btn{
+    font-size: 20px;
+    margin: 20px;
+    background-color: rgb(146, 211, 232);
+    color: black;
+    font-weight: bolder;
+    font-style: normal;
+    font-family: Georgia,serif;
+  }
+  .pagination{
+    margin: 10px;
+  }
+
+  .btn-v{
+    background-color: rgb(146, 211, 232);
+    color: black;
+    text-decoration: none;
+    margin: 20px;
+  }
+
+  .btn-d{
+    background-color: rgb(146, 211, 232);
+    color: black;
+    text-decoration: none;
+    margin: 20px;
+  }
+  .btn-d:hover{
+    background-color: rgb(255, 0, 0);
+    color: white;
+
+  }
+  .btn-v:hover{
+    background-color: rgb(0, 255, 98);
+    color: white;
+
+  }
+  .card-title{
+    background-color: black;
+    color: white;
+    padding:1em;
+  }
+  .card{
+
+        height: 45vh; margin: 10px;
+        width:23vw;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border-radius: 10px;
+        transform: translateY(3px);
+        transition: all 0.5s;
+  }
+  .card:hover{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
+
+    img {
+      /* Set initial size */
+      width: 100px;
+    
+      /* Transition for smooth scaling */
+      transition: transform 0.2s ease-in-out;
+    }
+    
+    img:hover {
+      /* Scale the image on hover */
+      transform: scale(1.5);
+    }
+    
+
+  
