@@ -1,0 +1,93 @@
+<div class="container-fluid main" style="height: 100%;">
+<div class="row d-flex">
+<!-- DELETING COMPONENT-->
+  <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete this compound????</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" (click)="deleteComp(deleteId)" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Adding component -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" *ngIf="{name:'', desc:'', img:'', attr:''} as comp">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Compound</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Name</label>
+          <input type="text" class="form-control " [(ngModel)]="comp.name">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label ">Description</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+          [value]="comp.desc" (input)="comp.desc = $event.target.value;"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Image source</label>
+          <input type="text" class="form-control" [(ngModel)]="comp.img">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Image Attr</label>
+          <input type="text" class="form-control" [(ngModel)]="comp.attr">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addComp(comp)">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- cards -->
+    <ng-container *ngIf="compounds | async as items">
+      <!--check if the compounds observable has a value.If it does, it assigns that value to the variable items. -->
+
+        <div class="col"  *ngFor="let item of items.data">
+         <!-- actual data fetched from filtering and pagination. -->
+            <div class="card mt-5">
+              <div class="col">
+                <h5 class="card-title" style="height:8vh;">{{item.CompoundName}}  <a href="/details/{{item.id}}"><i class=" ms-3 fa-solid fa-circle-info" style="color: white;"></i></a></h5>
+              
+              </div>
+
+              <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                <div class="card-img">
+                    <img [src]="item.strImageSource" [alt]="item.strImageAttribution" height="100px" style="width: fit-content; margin-left: 4vw; margin-top: -4vh;">
+                </div>
+                <div class="card-buttons">
+                    <a href="/details/{{item.id}}" class="btn-v btn mb-2">Edit</a>
+                    <a (click)="deleteId = item.id" class="btn-d btn mb-2" data-bs-toggle="modal" data-bs-target="#confirmModal">Delete</a>
+                </div>
+            </div>
+            
+            
+            </div>
+          </div>
+
+          <nav aria-label="...">  
+            <ul class="pagination">
+              <li class="page-item" [class.active]="i+1==pageNum" *ngFor="let num of array; let i = index;">
+                <a class="page-link" (click)="getData(i+1)">{{i + 1}}</a>
+              </li>
+            </ul>
+
+          </nav>
+    </ng-container>
+</div>
+</div>
